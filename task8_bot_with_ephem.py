@@ -4,7 +4,7 @@ import settings
 import ephem
 from datetime import datetime
 
-
+#bot
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     level=logging.INFO,
                     filename='bot.log'
