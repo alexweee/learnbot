@@ -4,6 +4,7 @@ import settings
 import ephem
 import dict_for_cityes
 from datetime import datetime
+import random
 
 DICTIONARY_WITH_CITIES = dict_for_cityes.cityes
 
@@ -49,6 +50,10 @@ def next_full_moon(bot, update):
     update.message.reply_text(nfm)
     
 def game_of_city(bot, update):
+    x = random.randint(0,100) 
+    bot_city = DICTIONARY_WITH_CITIES[x]
+    update.message.reply_text(f" Первый город - {bot_city}")
+    
     user_city = str(update.message.text)
     user_city_split = user_city.split()
     final_user_city = user_city_split[1]
