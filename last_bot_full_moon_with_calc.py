@@ -42,6 +42,31 @@ def counter(bot, update):
     else:  
         update.message.reply_text(f"{count_of_words} Слова")
 
+def calc(bot, update):
+    user_message_text = str(update.message.text).split('/calc ')
+    final_final = user_message_text[1]
+    calcul = str(final_final)
+ 
+    if '-' in calcul:
+        splitter1 = calcul.split('-')
+        result1 = int(splitter1[0]) - int(splitter1[1])
+        update.message.reply_text(result1)
+
+    elif '+' in calcul:
+        splitter2 = calcul.split('+')
+        result2 = int(splitter2[0]) + int(splitter2[1])
+        update.message.reply_text(result2)
+
+    elif '*' in calcul:
+        splitter3 = calcul.split('*')
+        result3 = int(splitter3[0]) * int(splitter3[1])
+        update.message.reply_text(result3)
+
+    elif '/' in calcul:
+        splitter4 = calcul.split('/')
+        result4 = int(splitter4[0]) / int(splitter4[1])
+        update.message.reply_text(result4)
+
 def next_full_moon(bot, update):
     user_moon = str(update.message.text)
     user_moon_split = user_moon.split()
@@ -90,6 +115,8 @@ def main():
     dp.add_handler(CommandHandler('next_full_moon', next_full_moon))
 
     dp.add_handler(CommandHandler('game_of_city', game_of_city))
+
+    dp.add_handler(CommandHandler('calc', calc))
 
     mybot.start_polling()
     mybot.idle()
